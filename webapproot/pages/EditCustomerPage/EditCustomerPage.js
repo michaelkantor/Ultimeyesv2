@@ -98,8 +98,9 @@ dojo.declare("EditCustomerPage", wm.Page, {
 	confirmDeleteOk: function(inSender, inResult) {
 		if (this.customerProductAssociateIDEditor.getDataValue()) {
             this.deleteAssociateLVar.update();
+            
 		} else {
-            this.customerDBForm.deleteData();
+            this.deleteCalibSVar.update();            
 		}
 	},
 	_end: 0

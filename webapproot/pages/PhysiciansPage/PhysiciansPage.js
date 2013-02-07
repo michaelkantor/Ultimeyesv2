@@ -1,4 +1,5 @@
 dojo.declare("PhysiciansPage", wm.Page, {
+	"preferredDevice": "desktop",
 	start: function() {
 		try {
 			this.connect(this.physicianproductassociateLiveForm1, "_setReadonly", this.idRelatedEditor1, "_setReadonly");

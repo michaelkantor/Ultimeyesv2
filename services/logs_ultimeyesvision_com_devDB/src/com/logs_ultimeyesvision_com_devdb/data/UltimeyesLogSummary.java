@@ -6,15 +6,12 @@ import java.util.Date;
 
 /**
  *  logs_ultimeyesvision_com_devDB.UltimeyesLogSummary
- *  11/15/2012 09:16:38
+ *  12/28/2012 17:12:13
  * 
  */
 public class UltimeyesLogSummary {
 
     private Integer id;
-    private Customer customer;
-    private InternalUploadSession internalUploadSession;
-    private InternalUploadSessionFile internalUploadSessionFile;
     private Date dateTaken;
     private Integer sessionNumber;
     private Integer excercise;
@@ -49,6 +46,9 @@ public class UltimeyesLogSummary {
     private Date createdAt;
     private Date updatedAt;
     private Integer screenResX;
+    private Customer customer;
+    private InternalUploadSession internalUploadSession;
+    private InternalUploadSessionFile internalUploadSessionFile;
 
     public Integer getId() {
         return id;
@@ -56,30 +56,6 @@ public class UltimeyesLogSummary {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public InternalUploadSession getInternalUploadSession() {
-        return internalUploadSession;
-    }
-
-    public void setInternalUploadSession(InternalUploadSession internalUploadSession) {
-        this.internalUploadSession = internalUploadSession;
-    }
-
-    public InternalUploadSessionFile getInternalUploadSessionFile() {
-        return internalUploadSessionFile;
-    }
-
-    public void setInternalUploadSessionFile(InternalUploadSessionFile internalUploadSessionFile) {
-        this.internalUploadSessionFile = internalUploadSessionFile;
     }
 
     public Date getDateTaken() {
@@ -352,6 +328,30 @@ public class UltimeyesLogSummary {
 
     public void setScreenResX(Integer screenResX) {
         this.screenResX = screenResX;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public InternalUploadSession getInternalUploadSession() {
+        return internalUploadSession;
+    }
+
+    public void setInternalUploadSession(InternalUploadSession internalUploadSession) {
+        this.internalUploadSession = internalUploadSession;
+    }
+
+    public InternalUploadSessionFile getInternalUploadSessionFile() {
+        return internalUploadSessionFile;
+    }
+
+    public void setInternalUploadSessionFile(InternalUploadSessionFile internalUploadSessionFile) {
+        this.internalUploadSessionFile = internalUploadSessionFile;
     }
 
 }

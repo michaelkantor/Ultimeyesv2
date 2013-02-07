@@ -27,12 +27,17 @@
                         <value>com.logs_ultimeyesvision_com_devdb.data.ViewSeatsUsedPerLicense</value>
                         <value>com.logs_ultimeyesvision_com_devdb.data.ViewSeatsUsedPerReseller</value>
                         <value>com.logs_ultimeyesvision_com_devdb.data.ViewSeatsUsedPerResellerId</value>
-                        <value>com.logs_ultimeyesvision_com_devdb.data.ViewSeatsUsedPerLicenseId</value>
-                        <value>com.logs_ultimeyesvision_com_devdb.data.AvailableLicenseKeysId</value>
                         <value>com.logs_ultimeyesvision_com_devdb.data.LicenseMacId</value>
+                        <value>com.logs_ultimeyesvision_com_devdb.data.AvailableLicenseKeysId</value>
+                        <value>com.logs_ultimeyesvision_com_devdb.data.ViewSeatsUsedPerLicenseId</value>
                         <value>com.logs_ultimeyesvision_com_devdb.data.ViewResellerCustomerProductAssociateId</value>
                         <value>com.logs_ultimeyesvision_com_devdb.data.PhysicianProductAssociateId</value>
+                        <value>com.logs_ultimeyesvision_com_devdb.data.output.GetUsernamesFromLogsRtnType</value>
+                        <value>com.logs_ultimeyesvision_com_devdb.data.output.GetLicensesFromLogsRtnType</value>
                     </list>
+                </entry>
+                <entry key="securityService">
+                    <list/>
                 </entry>
             </map>
         </property>

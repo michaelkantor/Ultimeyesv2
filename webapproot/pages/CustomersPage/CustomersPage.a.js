@@ -66,11 +66,7 @@ wire: ["wm.Wire", {"expression":undefined,"source":"customerLiveVariable1","targ
 wire1: ["wm.Wire", {"expression":"Boolean(window[\"studio\"]) || !${app.currentPhysicianVar.isEmpty}","targetProperty":"showing"}, {}]
 }]
 }],
-editCustomerPageContainer: ["wm.PageContainer", {"deferLoad":true,"pageName":"EditCustomerPage","styles":{"backgroundColor":"#ffffff"},"subpageEventlist":{"onDeleteCustomerSVarSuccess":"deleteCustomerSVar.onSuccess","onCustomerDBFormSuccess":"customerDBForm.onSuccess"},"subpageMethodlist":{},"subpageProplist":{}}, {"onCustomerDBFormSuccess":"editCustomerPageContainerCustomerDBFormSuccess","onDeleteCustomerSVarSuccess":"customerLiveVariable1"}, {
-binding: ["wm.Binding", {}, {}, {
-wire1: ["wm.Wire", {"expression":undefined,"source":"customerDojoGrid.isRowSelected","targetProperty":"showing"}, {}]
-}]
-}]
+editCustomerPageContainer: ["wm.PageContainer", {"deferLoad":true,"pageName":"EditCustomerPage","styles":{"backgroundColor":"#ffffff"},"subpageEventlist":{"onDeleteCustomerSVarSuccess":"deleteCustomerSVar.onSuccess","onCustomerDBFormSuccess":"customerDBForm.onSuccess"},"subpageMethodlist":{},"subpageProplist":{}}, {"onCustomerDBFormSuccess":"editCustomerPageContainerCustomerDBFormSuccess","onDeleteCustomerSVarSuccess":"customerLiveVariable1"}]
 }]
 }]
 };

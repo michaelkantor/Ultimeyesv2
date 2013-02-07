@@ -68,49 +68,49 @@
         <property name="password" type="string">
             <column name="password" length="50"/>
         </property>
-        <many-to-one name="customerType" class="com.logs_ultimeyesvision_com_devdb.data.CustomerType">
+        <many-to-one name="customerType" class="com.logs_ultimeyesvision_com_devdb.data.CustomerType" cascade="none">
             <column name="customer_type_id"/>
         </many-to-one>
-        <many-to-one name="physician" class="com.logs_ultimeyesvision_com_devdb.data.Physician">
+        <many-to-one name="physician" class="com.logs_ultimeyesvision_com_devdb.data.Physician" cascade="none">
             <column name="physician_id"/>
         </many-to-one>
-        <set name="ultimeyesLogStatics" inverse="true" cascade="">
+        <set name="ultimeyesLogStatics" inverse="true" cascade="none">
             <key>
                 <column name="customer_id"/>
             </key>
             <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic"/>
         </set>
-        <set name="ultimeyesLogDynamics" inverse="true" cascade="">
+        <set name="ultimeyesLogDynamics" inverse="true" cascade="none">
             <key>
                 <column name="customer_id"/>
             </key>
             <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic"/>
         </set>
-        <set name="customerResellerAssociates" inverse="true" cascade="">
+        <set name="customerResellerAssociates" inverse="true" cascade="none">
             <key>
                 <column name="customer_id" not-null="true"/>
             </key>
             <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.CustomerResellerAssociate"/>
         </set>
-        <set name="ultimeyesLogCalibrations" inverse="true" cascade="">
+        <set name="ultimeyesLogCalibrations" inverse="true" cascade="none">
             <key>
                 <column name="customer_id"/>
             </key>
             <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration"/>
         </set>
-        <set name="customerProductAssociates" inverse="true" cascade="">
+        <set name="customerProductAssociates" inverse="true" cascade="none">
             <key>
                 <column name="customer_id" not-null="true"/>
             </key>
             <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.CustomerProductAssociate"/>
         </set>
-        <set name="internalUploadSessionFiles" inverse="true" cascade="">
+        <set name="internalUploadSessionFiles" inverse="true" cascade="none">
             <key>
                 <column name="customer_id"/>
             </key>
             <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.InternalUploadSessionFile"/>
         </set>
-        <set name="ultimeyesLogSummaries" inverse="true" cascade="">
+        <set name="ultimeyesLogSummaries" inverse="true" cascade="delete-orphan">
             <key>
                 <column name="customer_id"/>
             </key>

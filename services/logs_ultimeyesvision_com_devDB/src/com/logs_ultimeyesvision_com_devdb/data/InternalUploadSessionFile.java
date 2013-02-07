@@ -8,23 +8,23 @@ import java.util.Set;
 
 /**
  *  logs_ultimeyesvision_com_devDB.InternalUploadSessionFile
- *  11/15/2012 09:16:38
+ *  12/28/2012 17:12:14
  * 
  */
 public class InternalUploadSessionFile {
 
     private Integer id;
-    private Customer customer;
-    private InternalUploadSession internalUploadSession;
     private String username;
     private String filename;
     private Date createdAt;
     private Date updatedAt;
     private Integer iterationNumber;
-    private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> ultimeyesLogSummaries = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary>();
+    private Customer customer;
+    private InternalUploadSession internalUploadSession;
     private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration> ultimeyesLogCalibrations = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration>();
     private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic> ultimeyesLogStatics = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic>();
     private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic> ultimeyesLogDynamics = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic>();
+    private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> ultimeyesLogSummaries = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary>();
 
     public Integer getId() {
         return id;
@@ -32,22 +32,6 @@ public class InternalUploadSessionFile {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public InternalUploadSession getInternalUploadSession() {
-        return internalUploadSession;
-    }
-
-    public void setInternalUploadSession(InternalUploadSession internalUploadSession) {
-        this.internalUploadSession = internalUploadSession;
     }
 
     public String getUsername() {
@@ -90,12 +74,20 @@ public class InternalUploadSessionFile {
         this.iterationNumber = iterationNumber;
     }
 
-    public Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> getUltimeyesLogSummaries() {
-        return ultimeyesLogSummaries;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setUltimeyesLogSummaries(Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> ultimeyesLogSummaries) {
-        this.ultimeyesLogSummaries = ultimeyesLogSummaries;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public InternalUploadSession getInternalUploadSession() {
+        return internalUploadSession;
+    }
+
+    public void setInternalUploadSession(InternalUploadSession internalUploadSession) {
+        this.internalUploadSession = internalUploadSession;
     }
 
     public Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration> getUltimeyesLogCalibrations() {
@@ -120,6 +112,14 @@ public class InternalUploadSessionFile {
 
     public void setUltimeyesLogDynamics(Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic> ultimeyesLogDynamics) {
         this.ultimeyesLogDynamics = ultimeyesLogDynamics;
+    }
+
+    public Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> getUltimeyesLogSummaries() {
+        return ultimeyesLogSummaries;
+    }
+
+    public void setUltimeyesLogSummaries(Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> ultimeyesLogSummaries) {
+        this.ultimeyesLogSummaries = ultimeyesLogSummaries;
     }
 
 }

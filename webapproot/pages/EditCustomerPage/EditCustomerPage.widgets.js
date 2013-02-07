@@ -1,5 +1,5 @@
 EditCustomerPage.widgets = {
-	onDeleteCustomerSVarSuccess: ["wm.Property", {"isEvent":true,"property":"deleteCustomerSVar.onSuccess","type":"string"}, {}],
+	onDeleteCustomerSVarSuccess: ["wm.Property", {"isEvent":true,"property":"deleteCustomerSVar.onSuccess"}, {}],
 	onCustomerDBFormSuccess: ["wm.Property", {"isEvent":true,"property":"customerDBForm.onSuccess","type":"string"}, {}],
 	customerProductAssociateLVar: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","startUpdate":false,"type":"com.logs_ultimeyesvision_com_devdb.data.CustomerProductAssociate"}, {"onSuccess":"customerProductAssociateLVarSuccess"}, {
 		binding: ["wm.Binding", {}, {}, {
@@ -12,7 +12,7 @@ EditCustomerPage.widgets = {
 			wire: ["wm.Wire", {"expression":undefined,"source":"[customersPage].customerDojoGrid.selectedItem","targetProperty":"dataSet"}, {}]
 		}]
 	}],
-	deleteAssociateLVar: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","operation":"delete","startUpdate":false,"type":"com.logs_ultimeyesvision_com_devdb.data.CustomerProductAssociate"}, {"onSuccess":"deleteAssociateLVarSuccess","onSuccess1":"customerDBForm.deleteData"}, {
+	deleteAssociateLVar: ["wm.LiveVariable", {"autoUpdate":false,"inFlightBehavior":"executeLast","operation":"delete","startUpdate":false,"type":"com.logs_ultimeyesvision_com_devdb.data.CustomerProductAssociate"}, {"onSuccess":"deleteAssociateLVarSuccess","onSuccess1":"deleteCalibSVar"}, {
 		binding: ["wm.Binding", {}, {}, {
 			wire: ["wm.Wire", {"expression":undefined,"source":"customerProductAssociateDBForm.dataOutput.id","targetProperty":"sourceData.id"}, {}]
 		}],
@@ -22,6 +22,34 @@ EditCustomerPage.widgets = {
 		input: ["wm.ServiceInput", {"type":"confirmInputs"}, {}, {
 			binding: ["wm.Binding", {}, {}, {
 				wire: ["wm.Wire", {"expression":"\"Are you sure you want to delete this customer?  The customer might not like it you know.\"","targetProperty":"text"}, {}]
+			}]
+		}]
+	}],
+	deleteStaticSVar: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"deleteStaticByCustomer","service":"logs_ultimeyesvision_com_devDB"}, {"onSuccess":"deleteSummarySVar"}, {
+		input: ["wm.ServiceInput", {"type":"deleteStaticByCustomerInputs"}, {}, {
+			binding: ["wm.Binding", {}, {}, {
+				wire: ["wm.Wire", {"expression":undefined,"source":"customerDataSet.id","targetProperty":"customerId"}, {}]
+			}]
+		}]
+	}],
+	deleteDynamicSVar: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"deleteDynamicByCustomer","service":"logs_ultimeyesvision_com_devDB"}, {"onSuccess":"deleteStaticSVar"}, {
+		input: ["wm.ServiceInput", {"type":"deleteDynamicByCustomerInputs"}, {}, {
+			binding: ["wm.Binding", {}, {}, {
+				wire: ["wm.Wire", {"expression":undefined,"source":"customerDataSet.id","targetProperty":"customerId"}, {}]
+			}]
+		}]
+	}],
+	deleteCalibSVar: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"deleteCalibByCustomer","service":"logs_ultimeyesvision_com_devDB"}, {"onSuccess":"deleteDynamicSVar"}, {
+		input: ["wm.ServiceInput", {"type":"deleteCalibByCustomerInputs"}, {}, {
+			binding: ["wm.Binding", {}, {}, {
+				wire: ["wm.Wire", {"expression":undefined,"source":"customerDataSet.id","targetProperty":"customerId"}, {}]
+			}]
+		}]
+	}],
+	deleteSummarySVar: ["wm.ServiceVariable", {"inFlightBehavior":"executeLast","operation":"deleteSummaryByCustomer","service":"logs_ultimeyesvision_com_devDB"}, {"onSuccess":"customerDBForm.deleteData"}, {
+		input: ["wm.ServiceInput", {"type":"deleteSummaryByCustomerInputs"}, {}, {
+			binding: ["wm.Binding", {}, {}, {
+				wire: ["wm.Wire", {"expression":undefined,"source":"customerDataSet.id","targetProperty":"customerId"}, {}]
 			}]
 		}]
 	}],
@@ -67,8 +95,8 @@ EditCustomerPage.widgets = {
 					wire: ["wm.Wire", {"expression":"new Date().getTime()","targetProperty":"dataValue"}, {}]
 				}]
 			}],
-			usernameEditor1: ["wm.Text", {"caption":"Username","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"username","height":"26px","readonly":true,"width":"100%"}, {}],
-			licenseLookup1: ["wm.Lookup", {"allowNone":true,"caption":"License","captionSize":"120px","dataType":"com.logs_ultimeyesvision_com_devdb.data.License","desktopHeight":"26px","displayField":"key","formField":"license","height":"26px","readonly":true,"width":"100%"}, {}]
+			usernameEditor1: ["wm.Text", {"caption":"Username","captionSize":"120px","changeOnKey":true,"dataValue":"","desktopHeight":"26px","emptyValue":"emptyString","formField":"username","height":"26px","readonly":true,"width":"100%"}, {}],
+			licenseLookup1: ["wm.Lookup", {"allowNone":true,"caption":"License","captionSize":"120px","dataType":"com.logs_ultimeyesvision_com_devdb.data.License","dataValue":undefined,"desktopHeight":"26px","displayField":"key","formField":"license","height":"26px","readonly":true,"width":"100%"}, {}]
 		}],
 		customerDBForm: ["wm.DBForm", {"deleteConfirmation":undefined,"height":"100%","isCompositeKey":false,"readonly":true,"readonlyManager":true,"type":"com.logs_ultimeyesvision_com_devdb.data.Customer"}, {"onCancelEdit":"customerProductAssociateDBForm.cancelEdit","onDataSetChanged":"customerDBFormDataSetChanged","onEditNewObject":"licenseFormPanel.show","onEnterKeyPress":"customerDBForm.saveData","onInsertSuccess":"customerDBFormInsertSuccess","onUpdateSuccess":"customerDBFormUpdateSuccess"}, {
 			binding: ["wm.Binding", {}, {}, {
@@ -81,26 +109,26 @@ EditCustomerPage.widgets = {
 				wire6: ["wm.Wire", {"expression":undefined,"source":"customerDataSet","targetProperty":"dataSet"}, {}]
 			}],
 			panel3: ["wm.Panel", {"autoScroll":true,"height":"100%","horizontalAlign":"left","verticalAlign":"top","width":"100%"}, {}, {
-				idEditor2: ["wm.Number", {"caption":"Id","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"zero","formField":"id","height":"26px","readonly":true,"required":true,"showing":false,"width":"100%"}, {}],
+				idEditor2: ["wm.Number", {"caption":"Id","captionSize":"120px","changeOnKey":true,"dataValue":0,"desktopHeight":"26px","emptyValue":"zero","formField":"id","height":"26px","readonly":true,"required":true,"showing":false,"width":"100%"}, {}],
 				physicianLookup2: ["wm.Lookup", {"caption":"Physician","captionSize":"120px","dataType":"com.logs_ultimeyesvision_com_devdb.data.Physician","desktopHeight":"26px","displayExpression":"${firstName} + \" \" + ${lastName}","displayField":"firstName","formField":"physician","height":"26px","readonly":true,"required":true,"width":"100%"}, {}, {
 					binding: ["wm.Binding", {}, {}, {
 						dataFieldWire: ["wm.Wire", {"source":"physicianLookup2.liveVariable","targetProperty":"dataSet"}, {}],
 						wire: ["wm.Wire", {"expression":undefined,"source":"[customersPage].physiciansGrid.selectedItem","targetProperty":"dataValue"}, {}]
 					}]
 				}],
-				firstNameEditor2: ["wm.Text", {"caption":"FirstName","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"firstName","height":"26px","readonly":true,"required":true,"width":"100%"}, {}],
-				lastNameEditor2: ["wm.Text", {"caption":"LastName","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"lastName","height":"26px","readonly":true,"required":true,"width":"100%"}, {}],
-				middleInitialEditor2: ["wm.Text", {"caption":"MiddleInitial","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"middleInitial","height":"26px","readonly":true,"width":"100%"}, {}],
-				ssnEditor2: ["wm.Text", {"caption":"Ssn","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"ssn","height":"26px","readonly":true,"width":"100%"}, {}],
-				tinEditor2: ["wm.Text", {"caption":"Tin","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"tin","height":"26px","readonly":true,"width":"100%"}, {}],
+				firstNameEditor2: ["wm.Text", {"caption":"FirstName","captionSize":"120px","changeOnKey":true,"dataValue":"","desktopHeight":"26px","emptyValue":"emptyString","formField":"firstName","height":"26px","readonly":true,"required":true,"width":"100%"}, {}],
+				lastNameEditor2: ["wm.Text", {"caption":"LastName","captionSize":"120px","changeOnKey":true,"dataValue":"","desktopHeight":"26px","emptyValue":"emptyString","formField":"lastName","height":"26px","readonly":true,"required":true,"width":"100%"}, {}],
+				middleInitialEditor2: ["wm.Text", {"caption":"MiddleInitial","captionSize":"120px","changeOnKey":true,"dataValue":"","desktopHeight":"26px","emptyValue":"emptyString","formField":"middleInitial","height":"26px","readonly":true,"width":"100%"}, {}],
+				ssnEditor2: ["wm.Text", {"caption":"Ssn","captionSize":"120px","changeOnKey":true,"dataValue":"","desktopHeight":"26px","emptyValue":"emptyString","formField":"ssn","height":"26px","readonly":true,"width":"100%"}, {}],
+				tinEditor2: ["wm.Text", {"caption":"Tin","captionSize":"120px","changeOnKey":true,"dataValue":"","desktopHeight":"26px","emptyValue":"emptyString","formField":"tin","height":"26px","readonly":true,"width":"100%"}, {}],
 				dobEditor: ["wm.Date", {"caption":"Dob","captionSize":"120px","desktopHeight":"26px","emptyValue":"emptyString","formField":"dob","height":"26px","readonly":true,"width":"100%"}, {}, {
 					binding: ["wm.Binding", {}, {}, {
 						wire: ["wm.Wire", {"expression":"new Date()","targetProperty":"dataValue"}, {}]
 					}]
 				}],
-				addressEditor2: ["wm.Text", {"caption":"Address","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"address","height":"26px","readonly":true,"width":"100%"}, {}],
-				phoneEditor2: ["wm.Text", {"caption":"Phone","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"phone","height":"26px","readonly":true,"width":"100%"}, {}],
-				emailEditor2: ["wm.Text", {"caption":"Email","captionSize":"120px","changeOnKey":true,"desktopHeight":"26px","emptyValue":"emptyString","formField":"email","height":"26px","readonly":true,"width":"100%"}, {}],
+				addressEditor2: ["wm.Text", {"caption":"Address","captionSize":"120px","changeOnKey":true,"dataValue":"","desktopHeight":"26px","emptyValue":"emptyString","formField":"address","height":"26px","readonly":true,"width":"100%"}, {}],
+				phoneEditor2: ["wm.Text", {"caption":"Phone","captionSize":"120px","changeOnKey":true,"dataValue":"","desktopHeight":"26px","emptyValue":"emptyString","formField":"phone","height":"26px","readonly":true,"width":"100%"}, {}],
+				emailEditor2: ["wm.Text", {"caption":"Email","captionSize":"120px","changeOnKey":true,"dataValue":"","desktopHeight":"26px","emptyValue":"emptyString","formField":"email","height":"26px","readonly":true,"width":"100%"}, {}],
 				createdAtEditor2: ["wm.DateTime", {"caption":"CreatedAt","captionSize":"120px","dateMode":"Date","desktopHeight":"26px","emptyValue":"zero","formField":"createdAt","height":"26px","readonly":true,"showing":false,"width":"100%"}, {}, {
 					binding: ["wm.Binding", {}, {}, {
 						wire: ["wm.Wire", {"expression":"new Date().getTime()","targetProperty":"dataValue"}, {}]
@@ -111,7 +139,7 @@ EditCustomerPage.widgets = {
 						wire: ["wm.Wire", {"expression":"new Date().getTime()","targetProperty":"dataValue"}, {}]
 					}]
 				}],
-				notesEditor1: ["wm.LargeTextArea", {"caption":"Notes","captionAlign":"right","captionPosition":"left","captionSize":"120px","changeOnKey":true,"emptyValue":"emptyString","formField":"notes","height":"100%","maxHeight":150,"readonly":true,"width":"100%"}, {}]
+				notesEditor1: ["wm.LargeTextArea", {"caption":"Notes","captionAlign":"right","captionPosition":"left","captionSize":"120px","changeOnKey":true,"dataValue":"","emptyValue":"emptyString","formField":"notes","height":"100%","maxHeight":150,"readonly":true,"width":"100%"}, {}]
 			}],
 			customerDBFormButtonPanel: ["wm.Panel", {"_classes":{"domNode":["dialogfooter"]},"desktopHeight":"40px","enableTouchHeight":true,"height":"40px","horizontalAlign":"right","layoutKind":"left-to-right","mobileHeight":"40px","verticalAlign":"top","width":"100%"}, {}, {
 				customerDBFormEditButton: ["wm.Button", {"caption":"Edit","desktopHeight":"40px","height":"40px","margin":"4"}, {"onclick":"customerDBForm.editCurrentObject","onclick1":"customerProductAssociateDBForm.editCurrentObject"}, {

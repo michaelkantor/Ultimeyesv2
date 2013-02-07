@@ -26,12 +26,6 @@
             </key>
             <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic"/>
         </set>
-        <set name="ultimeyesLogSummaries" inverse="true" cascade="">
-            <key>
-                <column name="internal_upload_session_id" not-null="true"/>
-            </key>
-            <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary"/>
-        </set>
         <set name="ultimeyesLogStatics" inverse="true" cascade="">
             <key>
                 <column name="internal_upload_session_id" not-null="true"/>
@@ -43,6 +37,12 @@
                 <column name="internal_upload_session_id" not-null="true"/>
             </key>
             <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration"/>
+        </set>
+        <set name="ultimeyesLogSummaries" inverse="true" cascade="">
+            <key>
+                <column name="internal_upload_session_id" not-null="true"/>
+            </key>
+            <one-to-many class="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary"/>
         </set>
     </class>
 </hibernate-mapping>

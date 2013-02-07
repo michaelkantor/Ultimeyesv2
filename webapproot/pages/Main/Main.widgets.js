@@ -17,7 +17,7 @@ Main.widgets = {
 				}]
 			}],
 			panel2: ["wm.MainContentPanel", {"height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
-				tabLayers1: ["wm.TabLayers", {"conditionalTabButtons":true}, {}, {
+				tabLayers1: ["wm.TabLayers", {"conditionalTabButtons":true,"manageURL":true}, {}, {
 					customerLayer: ["wm.Layer", {"border":"2","caption":"Customers","horizontalAlign":"left","padding":"2","verticalAlign":"top"}, {}, {
 						customersPageContainer: ["wm.PageContainer", {"deferLoad":true,"pageName":"CustomersPage","subpageEventlist":{},"subpageMethodlist":{},"subpageProplist":{}}, {}]
 					}],

@@ -8,14 +8,12 @@ import java.util.Set;
 
 /**
  *  logs_ultimeyesvision_com_devDB.Customer
- *  11/15/2012 09:16:38
+ *  12/28/2012 17:12:48
  * 
  */
 public class Customer {
 
     private Integer id;
-    private CustomerType customerType;
-    private Physician physician;
     private String firstName;
     private String lastName;
     private String middleInitial;
@@ -37,6 +35,8 @@ public class Customer {
     private String telephone;
     private String login;
     private String password;
+    private CustomerType customerType;
+    private Physician physician;
     private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic> ultimeyesLogStatics = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic>();
     private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic> ultimeyesLogDynamics = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic>();
     private Set<com.logs_ultimeyesvision_com_devdb.data.CustomerResellerAssociate> customerResellerAssociates = new HashSet<com.logs_ultimeyesvision_com_devdb.data.CustomerResellerAssociate>();
@@ -51,22 +51,6 @@ public class Customer {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public CustomerType getCustomerType() {
-        return customerType;
-    }
-
-    public void setCustomerType(CustomerType customerType) {
-        this.customerType = customerType;
-    }
-
-    public Physician getPhysician() {
-        return physician;
-    }
-
-    public void setPhysician(Physician physician) {
-        this.physician = physician;
     }
 
     public String getFirstName() {
@@ -235,6 +219,22 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public CustomerType getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
+    }
+
+    public Physician getPhysician() {
+        return physician;
+    }
+
+    public void setPhysician(Physician physician) {
+        this.physician = physician;
     }
 
     public Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic> getUltimeyesLogStatics() {

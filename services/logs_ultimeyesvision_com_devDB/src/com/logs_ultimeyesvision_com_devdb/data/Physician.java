@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  logs_ultimeyesvision_com_devDB.Physician
- *  11/15/2012 09:16:38
+ *  12/28/2012 17:12:48
  * 
  */
 public class Physician {
@@ -27,8 +27,8 @@ public class Physician {
     private String password;
     private Date createdAt;
     private Date updatedAt;
-    private Set<com.logs_ultimeyesvision_com_devdb.data.Customer> customers = new HashSet<com.logs_ultimeyesvision_com_devdb.data.Customer>();
     private Set<com.logs_ultimeyesvision_com_devdb.data.PhysicianProductAssociate> physicianProductAssociates = new HashSet<com.logs_ultimeyesvision_com_devdb.data.PhysicianProductAssociate>();
+    private Set<com.logs_ultimeyesvision_com_devdb.data.Customer> customers = new HashSet<com.logs_ultimeyesvision_com_devdb.data.Customer>();
 
     public Integer getId() {
         return id;
@@ -142,20 +142,20 @@ public class Physician {
         this.updatedAt = updatedAt;
     }
 
-    public Set<com.logs_ultimeyesvision_com_devdb.data.Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(Set<com.logs_ultimeyesvision_com_devdb.data.Customer> customers) {
-        this.customers = customers;
-    }
-
     public Set<com.logs_ultimeyesvision_com_devdb.data.PhysicianProductAssociate> getPhysicianProductAssociates() {
         return physicianProductAssociates;
     }
 
     public void setPhysicianProductAssociates(Set<com.logs_ultimeyesvision_com_devdb.data.PhysicianProductAssociate> physicianProductAssociates) {
         this.physicianProductAssociates = physicianProductAssociates;
+    }
+
+    public Set<com.logs_ultimeyesvision_com_devdb.data.Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<com.logs_ultimeyesvision_com_devdb.data.Customer> customers) {
+        this.customers = customers;
     }
 
 }

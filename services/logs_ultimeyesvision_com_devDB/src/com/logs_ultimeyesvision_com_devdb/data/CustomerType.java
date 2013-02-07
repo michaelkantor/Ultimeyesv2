@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  logs_ultimeyesvision_com_devDB.CustomerType
- *  11/15/2012 09:16:38
+ *  12/28/2012 17:12:48
  * 
  */
 public class CustomerType {

@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  *  logs_ultimeyesvision_com_devDB.InternalUploadSession
- *  11/15/2012 09:16:38
+ *  12/28/2012 17:12:13
  * 
  */
 public class InternalUploadSession {
@@ -19,9 +19,9 @@ public class InternalUploadSession {
     private Date internalSessionTimestamp;
     private Set<com.logs_ultimeyesvision_com_devdb.data.InternalUploadSessionFile> internalUploadSessionFiles = new HashSet<com.logs_ultimeyesvision_com_devdb.data.InternalUploadSessionFile>();
     private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic> ultimeyesLogDynamics = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic>();
-    private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> ultimeyesLogSummaries = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary>();
     private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic> ultimeyesLogStatics = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic>();
     private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration> ultimeyesLogCalibrations = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration>();
+    private Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> ultimeyesLogSummaries = new HashSet<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary>();
 
     public Integer getId() {
         return id;
@@ -71,14 +71,6 @@ public class InternalUploadSession {
         this.ultimeyesLogDynamics = ultimeyesLogDynamics;
     }
 
-    public Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> getUltimeyesLogSummaries() {
-        return ultimeyesLogSummaries;
-    }
-
-    public void setUltimeyesLogSummaries(Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> ultimeyesLogSummaries) {
-        this.ultimeyesLogSummaries = ultimeyesLogSummaries;
-    }
-
     public Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic> getUltimeyesLogStatics() {
         return ultimeyesLogStatics;
     }
@@ -93,6 +85,14 @@ public class InternalUploadSession {
 
     public void setUltimeyesLogCalibrations(Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration> ultimeyesLogCalibrations) {
         this.ultimeyesLogCalibrations = ultimeyesLogCalibrations;
+    }
+
+    public Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> getUltimeyesLogSummaries() {
+        return ultimeyesLogSummaries;
+    }
+
+    public void setUltimeyesLogSummaries(Set<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary> ultimeyesLogSummaries) {
+        this.ultimeyesLogSummaries = ultimeyesLogSummaries;
     }
 
 }

@@ -107,13 +107,13 @@
         <property name="screenResX" type="integer">
             <column name="screen_res_x"/>
         </property>
-        <many-to-one name="customer" class="com.logs_ultimeyesvision_com_devdb.data.Customer">
+        <many-to-one name="customer" class="com.logs_ultimeyesvision_com_devdb.data.Customer" cascade="delete-orphan">
             <column name="customer_id"/>
         </many-to-one>
-        <many-to-one name="internalUploadSession" class="com.logs_ultimeyesvision_com_devdb.data.InternalUploadSession">
+        <many-to-one name="internalUploadSession" class="com.logs_ultimeyesvision_com_devdb.data.InternalUploadSession" cascade="delete-orphan">
             <column name="internal_upload_session_id" not-null="true"/>
         </many-to-one>
-        <many-to-one name="internalUploadSessionFile" class="com.logs_ultimeyesvision_com_devdb.data.InternalUploadSessionFile">
+        <many-to-one name="internalUploadSessionFile" class="com.logs_ultimeyesvision_com_devdb.data.InternalUploadSessionFile" cascade="delete-orphan">
             <column name="internal_upload_session_file_id" not-null="true"/>
         </many-to-one>
     </class>

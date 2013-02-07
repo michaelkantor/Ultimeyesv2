@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" id="logs_ultimeyesvision_com_devDB" class="com.logs_ultimeyesvision_com_devdb.Logs_ultimeyesvision_com_devDB" CRUDService="true" type="DataService" springFile="logs_ultimeyesvision_com_devDB.spring.xml">
+    <operation operationType="hqlquery" name="getLicensesFromLogs">
+        <return typeRef="com.logs_ultimeyesvision_com_devdb.data.output.GetLicensesFromLogsRtnType" isList="true"/>
+    </operation>
+    <operation operationType="hqlquery" name="deleteStaticByCustomer">
+        <parameter name="customerId" typeRef="java.lang.Integer" isList="false"/>
+        <return typeRef="java.lang.Integer" isList="false"/>
+    </operation>
     <operation operationType="hqlquery" name="getUltimeyesLogCalibrationById">
         <parameter name="id" typeRef="java.lang.Integer" isList="false"/>
         <return typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration" isList="false"/>
+    </operation>
+    <operation operationType="hqlquery" name="deleteSummaryByCustomer">
+        <parameter name="customerId" typeRef="java.lang.Integer" isList="false"/>
+        <return typeRef="java.lang.Integer" isList="false"/>
+    </operation>
+    <operation operationType="hqlquery" name="deleteDynamicByCustomer">
+        <parameter name="customerId" typeRef="java.lang.Integer" isList="false"/>
+        <return typeRef="java.lang.Integer" isList="false"/>
+    </operation>
+    <operation operationType="hqlquery" name="getUsernamesFromLogs">
+        <return typeRef="com.logs_ultimeyesvision_com_devdb.data.output.GetUsernamesFromLogsRtnType" isList="true"/>
+    </operation>
+    <operation operationType="hqlquery" name="deleteCalibByCustomer">
+        <parameter name="customerId" typeRef="java.lang.Integer" isList="false"/>
+        <return typeRef="java.lang.Integer" isList="false"/>
     </operation>
     <dataobjects>
         <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.AvailableLicenseKeys" supportsQuickData="true">
@@ -121,9 +143,9 @@
             <element name="internalSessionTimestamp" typeRef="java.util.Date" isList="false" allowNull="true"/>
             <element name="internalUploadSessionFiles" typeRef="com.logs_ultimeyesvision_com_devdb.data.InternalUploadSessionFile" isList="true" allowNull="true"/>
             <element name="ultimeyesLogDynamics" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic" isList="true" allowNull="true"/>
-            <element name="ultimeyesLogSummaries" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary" isList="true" allowNull="true"/>
             <element name="ultimeyesLogStatics" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic" isList="true" allowNull="true"/>
             <element name="ultimeyesLogCalibrations" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration" isList="true" allowNull="true"/>
+            <element name="ultimeyesLogSummaries" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary" isList="true" allowNull="true"/>
         </dataobject>
         <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.InternalUploadSessionFile" supportsQuickData="true">
             <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false">
@@ -142,10 +164,10 @@
             <element name="iterationNumber" typeRef="java.lang.Integer" isList="false" allowNull="true"/>
             <element name="customer" typeRef="com.logs_ultimeyesvision_com_devdb.data.Customer" isList="false" allowNull="true"/>
             <element name="internalUploadSession" typeRef="com.logs_ultimeyesvision_com_devdb.data.InternalUploadSession" isList="false" allowNull="false"/>
-            <element name="ultimeyesLogSummaries" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary" isList="true" allowNull="true"/>
             <element name="ultimeyesLogCalibrations" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration" isList="true" allowNull="true"/>
             <element name="ultimeyesLogStatics" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogStatic" isList="true" allowNull="true"/>
             <element name="ultimeyesLogDynamics" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogDynamic" isList="true" allowNull="true"/>
+            <element name="ultimeyesLogSummaries" typeRef="com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogSummary" isList="true" allowNull="true"/>
         </dataobject>
         <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.License" supportsQuickData="true">
             <element name="id" typeRef="java.lang.Integer" isList="false" allowNull="false">
@@ -201,8 +223,8 @@
             <element name="password" typeRef="java.lang.String" isList="false" allowNull="true"/>
             <element name="createdAt" typeRef="java.util.Date" isList="false" allowNull="true"/>
             <element name="updatedAt" typeRef="java.util.Date" isList="false" allowNull="true"/>
-            <element name="customers" typeRef="com.logs_ultimeyesvision_com_devdb.data.Customer" isList="true" allowNull="true"/>
             <element name="physicianProductAssociates" typeRef="com.logs_ultimeyesvision_com_devdb.data.PhysicianProductAssociate" isList="true" allowNull="true"/>
+            <element name="customers" typeRef="com.logs_ultimeyesvision_com_devdb.data.Customer" isList="true" allowNull="true"/>
         </dataobject>
         <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.PhysicianProductAssociate" supportsQuickData="true">
             <element name="id" typeRef="com.logs_ultimeyesvision_com_devdb.data.PhysicianProductAssociateId" isList="false" allowNull="false">
@@ -492,6 +514,73 @@
                 <noChange>update</noChange>
             </element>
         </dataobject>
+        <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.LicenseMacId" name="id" supportsQuickData="false">
+            <element name="licenseId" typeRef="java.lang.Integer" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <require>insert</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+            </element>
+            <element name="macAddr" typeRef="java.io.Serializable" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <require>insert</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+            </element>
+            <element name="createdAt" typeRef="java.util.Date" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <require>insert</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+            </element>
+            <element name="updatedAt" typeRef="java.util.Date" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <require>insert</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+            </element>
+        </dataobject>
+        <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.AvailableLicenseKeysId" name="id" supportsQuickData="false">
+            <element name="key" typeRef="java.lang.String" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <require>insert</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+            </element>
+            <element name="createdAt" typeRef="java.util.Date" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <require>insert</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+            </element>
+            <element name="updatedAt" typeRef="java.util.Date" isList="false" allowNull="false">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <require>insert</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+            </element>
+        </dataobject>
         <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.ViewSeatsUsedPerLicenseId" name="id" supportsQuickData="false">
             <element name="licenseId" typeRef="java.lang.Integer" isList="false" allowNull="false">
                 <require>delete</require>
@@ -557,73 +646,6 @@
                 <noChange>update</noChange>
             </element>
             <element name="seatsAllocatedPerReseller" typeRef="java.lang.Integer" isList="false" allowNull="false">
-                <require>delete</require>
-                <require>read</require>
-                <require>update</require>
-                <require>insert</require>
-                <noChange>delete</noChange>
-                <noChange>read</noChange>
-                <noChange>update</noChange>
-            </element>
-        </dataobject>
-        <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.AvailableLicenseKeysId" name="id" supportsQuickData="false">
-            <element name="key" typeRef="java.lang.String" isList="false" allowNull="false">
-                <require>delete</require>
-                <require>read</require>
-                <require>update</require>
-                <require>insert</require>
-                <noChange>delete</noChange>
-                <noChange>read</noChange>
-                <noChange>update</noChange>
-            </element>
-            <element name="createdAt" typeRef="java.util.Date" isList="false" allowNull="false">
-                <require>delete</require>
-                <require>read</require>
-                <require>update</require>
-                <require>insert</require>
-                <noChange>delete</noChange>
-                <noChange>read</noChange>
-                <noChange>update</noChange>
-            </element>
-            <element name="updatedAt" typeRef="java.util.Date" isList="false" allowNull="false">
-                <require>delete</require>
-                <require>read</require>
-                <require>update</require>
-                <require>insert</require>
-                <noChange>delete</noChange>
-                <noChange>read</noChange>
-                <noChange>update</noChange>
-            </element>
-        </dataobject>
-        <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.LicenseMacId" name="id" supportsQuickData="false">
-            <element name="licenseId" typeRef="java.lang.Integer" isList="false" allowNull="false">
-                <require>delete</require>
-                <require>read</require>
-                <require>update</require>
-                <require>insert</require>
-                <noChange>delete</noChange>
-                <noChange>read</noChange>
-                <noChange>update</noChange>
-            </element>
-            <element name="macAddr" typeRef="java.io.Serializable" isList="false" allowNull="false">
-                <require>delete</require>
-                <require>read</require>
-                <require>update</require>
-                <require>insert</require>
-                <noChange>delete</noChange>
-                <noChange>read</noChange>
-                <noChange>update</noChange>
-            </element>
-            <element name="createdAt" typeRef="java.util.Date" isList="false" allowNull="false">
-                <require>delete</require>
-                <require>read</require>
-                <require>update</require>
-                <require>insert</require>
-                <noChange>delete</noChange>
-                <noChange>read</noChange>
-                <noChange>update</noChange>
-            </element>
-            <element name="updatedAt" typeRef="java.util.Date" isList="false" allowNull="false">
                 <require>delete</require>
                 <require>read</require>
                 <require>update</require>
@@ -735,6 +757,12 @@
                 <noChange>read</noChange>
                 <noChange>update</noChange>
             </element>
+        </dataobject>
+        <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.output.GetUsernamesFromLogsRtnType" supportsQuickData="false">
+            <element name="username" typeRef="java.lang.String" isList="false" allowNull="false"/>
+        </dataobject>
+        <dataobject javaType="com.logs_ultimeyesvision_com_devdb.data.output.GetLicensesFromLogsRtnType" supportsQuickData="false">
+            <element name="license" typeRef="java.lang.String" isList="false" allowNull="false"/>
         </dataobject>
     </dataobjects>
 </service>

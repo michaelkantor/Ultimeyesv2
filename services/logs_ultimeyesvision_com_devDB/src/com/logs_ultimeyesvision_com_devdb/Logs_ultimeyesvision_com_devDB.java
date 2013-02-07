@@ -2,7 +2,8 @@
 package com.logs_ultimeyesvision_com_devdb;
 
 import java.util.List;
-import com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration;
+import com.logs_ultimeyesvision_com_devdb.data.output.GetLicensesFromLogsRtnType;
+import com.logs_ultimeyesvision_com_devdb.data.output.GetUsernamesFromLogsRtnType;
 import com.wavemaker.json.type.TypeDefinition;
 import com.wavemaker.runtime.data.DataServiceManager;
 import com.wavemaker.runtime.data.DataServiceManagerAccess;
@@ -15,7 +16,7 @@ import com.wavemaker.runtime.service.TypedServiceReturn;
 
 /**
  *  Operations for service "logs_ultimeyesvision_com_devDB"
- *  11/15/2012 09:16:35
+ *  12/28/2012 17:29:11
  * 
  */
 @SuppressWarnings("unchecked")
@@ -26,8 +27,52 @@ public class Logs_ultimeyesvision_com_devDB
     private DataServiceManager dsMgr;
     private TaskManager taskMgr;
 
-    public UltimeyesLogCalibration getUltimeyesLogCalibrationById(Integer id) {
-        List<UltimeyesLogCalibration> rtn = ((List<UltimeyesLogCalibration> ) dsMgr.invoke(taskMgr.getQueryTask(), (Logs_ultimeyesvision_com_devDBConstants.getUltimeyesLogCalibrationByIdQueryName), id));
+    public List<GetLicensesFromLogsRtnType> getLicensesFromLogs(PagingOptions pagingOptions) {
+        return ((List<GetLicensesFromLogsRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Logs_ultimeyesvision_com_devDBConstants.getLicensesFromLogsQueryName), pagingOptions));
+    }
+
+    public Integer deleteStaticByCustomer(Integer customerId, PagingOptions pagingOptions) {
+        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Logs_ultimeyesvision_com_devDBConstants.deleteStaticByCustomerQueryName), customerId, pagingOptions));
+        if (rtn.isEmpty()) {
+            return null;
+        } else {
+            return rtn.get(0);
+        }
+    }
+
+    public com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration getUltimeyesLogCalibrationById(Integer id, PagingOptions pagingOptions) {
+        List<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration> rtn = ((List<com.logs_ultimeyesvision_com_devdb.data.UltimeyesLogCalibration> ) dsMgr.invoke(taskMgr.getQueryTask(), (Logs_ultimeyesvision_com_devDBConstants.getUltimeyesLogCalibrationByIdQueryName), id, pagingOptions));
+        if (rtn.isEmpty()) {
+            return null;
+        } else {
+            return rtn.get(0);
+        }
+    }
+
+    public Integer deleteSummaryByCustomer(Integer customerId, PagingOptions pagingOptions) {
+        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Logs_ultimeyesvision_com_devDBConstants.deleteSummaryByCustomerQueryName), customerId, pagingOptions));
+        if (rtn.isEmpty()) {
+            return null;
+        } else {
+            return rtn.get(0);
+        }
+    }
+
+    public Integer deleteDynamicByCustomer(Integer customerId, PagingOptions pagingOptions) {
+        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Logs_ultimeyesvision_com_devDBConstants.deleteDynamicByCustomerQueryName), customerId, pagingOptions));
+        if (rtn.isEmpty()) {
+            return null;
+        } else {
+            return rtn.get(0);
+        }
+    }
+
+    public List<GetUsernamesFromLogsRtnType> getUsernamesFromLogs(PagingOptions pagingOptions) {
+        return ((List<GetUsernamesFromLogsRtnType> ) dsMgr.invoke(taskMgr.getQueryTask(), (Logs_ultimeyesvision_com_devDBConstants.getUsernamesFromLogsQueryName), pagingOptions));
+    }
+
+    public Integer deleteCalibByCustomer(Integer customerId, PagingOptions pagingOptions) {
+        List<Integer> rtn = ((List<Integer> ) dsMgr.invoke(taskMgr.getQueryTask(), (Logs_ultimeyesvision_com_devDBConstants.deleteCalibByCustomerQueryName), customerId, pagingOptions));
         if (rtn.isEmpty()) {
             return null;
         } else {

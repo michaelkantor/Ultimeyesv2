@@ -901,7 +901,7 @@ wm.types = {
 				},
 				"ultimeyesLogCalibrations": {
 					"exclude": [],
-					"fieldOrder": 8,
+					"fieldOrder": 7,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -921,7 +921,7 @@ wm.types = {
 				},
 				"ultimeyesLogStatics": {
 					"exclude": [],
-					"fieldOrder": 7,
+					"fieldOrder": 6,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -931,7 +931,7 @@ wm.types = {
 				},
 				"ultimeyesLogSummaries": {
 					"exclude": [],
-					"fieldOrder": 6,
+					"fieldOrder": 8,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -1008,7 +1008,7 @@ wm.types = {
 				},
 				"ultimeyesLogCalibrations": {
 					"exclude": [],
-					"fieldOrder": 9,
+					"fieldOrder": 8,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -1018,7 +1018,7 @@ wm.types = {
 				},
 				"ultimeyesLogDynamics": {
 					"exclude": [],
-					"fieldOrder": 11,
+					"fieldOrder": 10,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -1028,7 +1028,7 @@ wm.types = {
 				},
 				"ultimeyesLogStatics": {
 					"exclude": [],
-					"fieldOrder": 10,
+					"fieldOrder": 9,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -1038,7 +1038,7 @@ wm.types = {
 				},
 				"ultimeyesLogSummaries": {
 					"exclude": [],
-					"fieldOrder": 8,
+					"fieldOrder": 11,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -1266,7 +1266,7 @@ wm.types = {
 				},
 				"customers": {
 					"exclude": [],
-					"fieldOrder": 14,
+					"fieldOrder": 15,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -1366,7 +1366,7 @@ wm.types = {
 				},
 				"physicianProductAssociates": {
 					"exclude": [],
-					"fieldOrder": 15,
+					"fieldOrder": 14,
 					"fieldSubType": null,
 					"include": [],
 					"isList": true,
@@ -3144,6 +3144,40 @@ wm.types = {
 			"liveService": false,
 			"service": "logs_ultimeyesvision_com_devDB"
 		},
+		"com.logs_ultimeyesvision_com_devdb.data.output.GetLicensesFromLogsRtnType": {
+			"fields": {
+				"license": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "logs_ultimeyesvision_com_devDB"
+		},
+		"com.logs_ultimeyesvision_com_devdb.data.output.GetUsernamesFromLogsRtnType": {
+			"fields": {
+				"username": {
+					"exclude": [],
+					"fieldOrder": 0,
+					"fieldSubType": null,
+					"include": [],
+					"isList": false,
+					"noChange": [],
+					"required": true,
+					"type": "java.lang.String"
+				}
+			},
+			"internal": false,
+			"liveService": false,
+			"service": "logs_ultimeyesvision_com_devDB"
+		},
 		"double": {
 			"internal": true,
 			"primitiveType": "Number"
@@ -3243,7 +3277,7 @@ dojo.declare("Ultimeyesv2", wm.Application, {
 	"name": "", 
 	"phoneGapLoginPage": "Login", 
 	"phoneMain": "", 
-	"projectSubVersion": 61, 
+	"projectSubVersion": 62, 
 	"projectVersion": 1, 
 	"studioVersion": "6.5.2.Release", 
 	"tabletMain": "", 
